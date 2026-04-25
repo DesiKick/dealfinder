@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Query too long' }, { status: 400 })
     }
 
-    const response = await client.messages.create({
+    const response = await (client.messages.create as any)({
       model: 'claude-sonnet-4-6',',
       max_tokens: 2000,
       tools: [{ type: 'web_search_20250305', name: 'web_search' } as any],
